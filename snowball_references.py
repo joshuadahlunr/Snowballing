@@ -58,7 +58,7 @@ def recursive_search(start_doi, max_depth=4, seen=None, found=None, current_dept
         s.seen = seen.union(found)
         raise s
 
-    return seen
+    return seen.union(found)
 
 if __name__ == "__main__":
 
