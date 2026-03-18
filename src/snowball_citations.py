@@ -71,8 +71,11 @@ if __name__ == "__main__":
         print("\nKeyboardInterrupt received. Stopping early...")
         citing_dois = s.seen
 
+    citing_dois = set(citing_dois)
+    citing_dois.remove(target_doi)
 
     print(f"\n{len(citing_dois)} DOIs that cite {target_doi}:\n")
-    with open("dois.txt", "w") as f:
+    with open("dois.list", "w") as f:
+        f.write(f"{target_doi}\n")
         for doi in citing_dois:
             f.write(f"{doi}\n")

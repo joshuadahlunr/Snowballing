@@ -33,7 +33,7 @@ for i, doi in enumerate(dois):
     if i < start_index: continue
     # if doi in already_explored: continue
     try:
-        found = snowball_citations.recursive_search(doi, 6, seen=seen)
+        found = snowball_citations.recursive_search(doi, 2, seen=seen)
     except snowball_citations.ThrowSeen as s:
         print("\nKeyboardInterrupt received. Stopping early...")
         found = s.seen

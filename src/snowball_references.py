@@ -66,13 +66,16 @@ if __name__ == "__main__":
     target_doi = "10.1145/2480741.2480743"
 
     try:
-        referenced_dois = recursive_search(target_doi)
+        referenced_dois = recursive_search(target_doi, 2)
     except ThrowSeen as s:
         print("\nKeyboardInterrupt received. Stopping early...")
         referenced_dois = s.seen
 
+    referenced_dois = set(referenced_dois)
+    referenced_dois.remove(target_doi)
 
     print(f"\n{len(referenced_dois)} DOIs that cite {target_doi}:\n")
-    with open("dois.txt", "w") as f:
+    with open("dois.list", "w") as f:
+        f.write(f"{target_doi}\n")
         for doi in referenced_dois:
             f.write(f"{doi}\n")
